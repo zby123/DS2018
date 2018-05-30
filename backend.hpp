@@ -735,7 +735,7 @@ public:
 			tstring<40> tic1, tic2;
 			tic1 += uid; tic2 += uid;
 			tic1 += date; tic2 += date;
-			tic1 += cata; tic2 += cata;
+			tic1 += cata[l]; tic2 += cata[l];
 			tic1 += fill_to(to_string(0), 9); tic2 += fill_to(to_string(1e9-1), 9);
 			sjtu::vector<Ticket> tvec;
 			ticketDB.findRangeData(tic1, tic2, tvec);
