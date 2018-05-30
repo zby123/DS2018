@@ -731,6 +731,7 @@ public:
 		date = buffer.gets();
 		string cata = buffer.gets();
 		string ans;
+		int tot = 0;
 		for (int l = 0; l < cata.length(); l++){
 			tstring<40> tic1, tic2;
 			tic1 += uid; tic2 += uid;
@@ -739,7 +740,7 @@ public:
 			tic1 += fill_to(to_string(0), 9); tic2 += fill_to(to_string(1e9-1), 9);
 			sjtu::vector<Ticket> tvec;
 			ticketDB.findRangeData(tic1, tic2, tvec);
-			ans += to_string(tvec.size()); ans += '\n';
+			tot += tvec.size();
 			int sz = tvec.size();
 			for(int i = 0; i < sz; i++) {
 				auto res2 = trainDB.find(tvec[i].trainID);
@@ -762,6 +763,7 @@ public:
 				delete res2.first;	
 			}
 		}
+		ans = to_string(tot) + '\n' + ans;
 		char *ret = new char[ans.length() + 1];
 		int len = ans.length();
 		for(int i = 0; i < len; i++) ret[i] = ans[i];
